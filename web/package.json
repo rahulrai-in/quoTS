@@ -1,0 +1,21 @@
+{
+  "name": "quots",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no tests installed\" && exit 1",
+    "build": "tsc",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahulrai-in/quoTS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahulrai-in/quoTS/issues"
+  },
+  "homepage": "https://github.com/rahulrai-in/quoTS#readme"
+}
