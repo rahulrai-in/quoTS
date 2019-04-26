@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Infrastructure.Models;
+using Api.Database;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace api
@@ -14,11 +17,42 @@ namespace api
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            IWebHost host = CreateWebHostBuilder(args).Build();
+            using(IServiceScope scope = host.Services.CreateScope())
+            {
+                ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+                var ablDbEntry = context.Authors.Add(new Author { Name = "Abraham Lincoln" });
+                var aristotleDbEntry = context.Authors.Add(new Author { Name = "Aristotle" });
+
+                context.Quotes.AddRange(
+                    new Quote
+                    {
+                        AuthorId = ablDbEntry.Entity.Id,
+                            Category = "inspirational",
+                            Text = "Whatever you are, be a good one."
+                    },
+                    new Quote
+                    {
+                        AuthorId = ablDbEntry.Entity.Id,
+                            Category = "books",
+                            Text = "My Best Friend is a person who will give me a book I have not read."
+                    },
+                    new Quote
+                    {
+                        AuthorId = aristotleDbEntry.Entity.Id,
+                            Category = "inspirational",
+                            Text = "You will never do anything in this world without courage. It is the greatest quality of the mind next to honor."
+                    }
+                );
+
+                context.SaveChanges();
+            }
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            .UseStartup<Startup>();
     }
 }

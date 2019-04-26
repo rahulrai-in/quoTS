@@ -1,4 +1,4 @@
-namespace api.Infrastructure
+namespace api.Infrastructure.Models
 {
   public class Quote
   {
@@ -6,9 +6,9 @@ namespace api.Infrastructure
 
     public string Text { get; set; }
 
-    public string Genre { get; set; }
+    public string Category { get; set; }
 
-    public string AuthorId { get; set; }
+    public int AuthorId { get; set; }
 
     public Author Author { get; set; }
   }

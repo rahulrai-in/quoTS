@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace api.Infrastructure
+namespace api.Infrastructure.Models
 {
   public class Author
   {
