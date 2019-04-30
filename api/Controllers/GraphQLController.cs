@@ -20,13 +20,17 @@ namespace api.Controllers
 
         public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
         {
+            // Convert parameters to Dictionary<string,object>
             var inputs = query.Variables.ToInputs();
 
+            // This is the schema for our GraphQL service. You can visualize it in the GraphiQL interface.
             var schema = new Schema
             {
-                Query = new AuthorQuery(_db)
+                Query = new AuthorQuery(_db),
+                Mutation = new QuoteMutation(_db)
             };
 
+            // This function will either execute query or mutation based on request.
             var result = await new DocumentExecuter().ExecuteAsync(_ =>
             {
                 _.Schema = schema;

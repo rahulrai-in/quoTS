@@ -7,9 +7,5 @@ namespace api.Infrastructure.Models
     public string Text { get; set; }
 
     public string Category { get; set; }
-
-    public int AuthorId { get; set; }
-
-    public Author Author { get; set; }
   }
 }

@@ -10,7 +10,7 @@ namespace api.GraphQL
             Name = nameof(Quote);
             Field(x => x.Id, type : typeof(IdGraphType)).Description("The Id of the quote.");
             Field(x => x.Text).Description("The quote.");
-            Field(x => x.Category).Description("Quote category");
+            Field(x => x.Category).Description("Quote category.");
         }
     }
 }

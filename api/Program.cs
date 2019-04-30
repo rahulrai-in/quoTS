@@ -22,29 +22,28 @@ namespace api
             {
                 ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-                var ablDbEntry = context.Authors.Add(new Author { Name = "Abraham Lincoln" });
-                var aristotleDbEntry = context.Authors.Add(new Author { Name = "Aristotle" });
+                var ablDbEntry = context.Authors.Add(new Author { Name = "Abraham Lincoln", Quotes = new List<Quote>() });
+                var aristotleDbEntry = context.Authors.Add(new Author { Name = "Aristotle", Quotes = new List<Quote>() });
 
-                context.Quotes.AddRange(
+                ablDbEntry.Entity.Quotes.AddRange(new List<Quote>
+                {
                     new Quote
                     {
-                        AuthorId = ablDbEntry.Entity.Id,
-                            Category = "inspirational",
+                        Category = "inspiration",
                             Text = "Whatever you are, be a good one."
                     },
                     new Quote
                     {
-                        AuthorId = ablDbEntry.Entity.Id,
-                            Category = "books",
+                        Category = "books",
                             Text = "My Best Friend is a person who will give me a book I have not read."
-                    },
-                    new Quote
-                    {
-                        AuthorId = aristotleDbEntry.Entity.Id,
-                            Category = "inspirational",
-                            Text = "You will never do anything in this world without courage. It is the greatest quality of the mind next to honor."
                     }
-                );
+                });
+
+                aristotleDbEntry.Entity.Quotes.Add(new Quote
+                {
+                    Category = "inspiration",
+                        Text = "You will never do anything in this world without courage. It is the greatest quality of the mind next to honor."
+                });
 
                 context.SaveChanges();
             }
