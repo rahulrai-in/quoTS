@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no tests installed\" && exit 1",
-    "build": "tsc",
-    "start": "node server.js"
+    "build:ts": "tsc",
+    "build:watch": "tsc -w",
+    "start": "node index.js",
+    "start:debug:brk": "node --nolazy --inspect-brk=9229 index.js 'dummy instructione here' -m -a 'test'"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,17 @@
   "bugs": {
     "url": "https://github.com/rahulrai-in/quoTS/issues"
   },
-  "homepage": "https://github.com/rahulrai-in/quoTS#readme"
+  "homepage": "https://github.com/rahulrai-in/quoTS#readme",
+  "private": true,
+  "dependencies": {
+    "@types/graphql": "^14.2.0",
+    "@types/minimist": "^1.2.0",
+    "@types/node": "^12.0.0",
+    "apollo-boost": "^0.3.1",
+    "graphql": "^14.3.0",
+    "graphql-tag": "^2.10.1",
+    "minimist": "^1.2.0",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
+  }
 }
