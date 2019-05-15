@@ -47,7 +47,6 @@ namespace api
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseGraphiQl("/graphql");
             app.UseMvc();
         }

@@ -8,14 +8,14 @@ function exitIfUndefined(value, message) {
         process.exit(1);
     }
 }
-exports.encoders = {
-    ['mutation']: new mutation_1.Mutation(),
-    ['query']: query_1.query
+exports.gqlOperations = {
+    ['mutation']: mutation_1.Mutation,
+    ['query']: query_1.Query
 };
 class Options {
     constructor(input, args) {
         this.input = input;
-        exitIfUndefined(input, `Please pass an input string.`);
+        exitIfUndefined(input, 'Please pass an input string.');
         this.mutation = args.mutation === undefined ? false : args.mutation;
         this.arguments = args.arguments;
     }

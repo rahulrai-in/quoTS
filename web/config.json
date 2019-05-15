@@ -1,3 +1,3 @@
 {
-  "graphQl": "testpath"
+  "graphQl": "http://localhost:5000/graphql"
 }

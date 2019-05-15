@@ -1,16 +1,20 @@
 import { IOperation } from './IOperation';
-import { default as ApolloClient } from 'apollo-boost';
+import { default as ApolloClient, FetchResult } from 'apollo-boost';
 import { default as gql } from 'graphql-tag';
 import { Config } from './config';
+import 'cross-fetch/polyfill';
 
-export class Mutation implements IOperation {
-  // constructor() {
-  //   var client = new ApolloClient({
-  //     uri: 'https://graphql.example.com'
-  //   });
-  // }
+export var Mutation: IOperation = {
+  async operation(input: string, argument: string): Promise<string> {
+    let query = async (): Promise<FetchResult<any>> => {
+      let client = new ApolloClient({ uri: Config.graphQl });
+      return await client.mutate({
+        mutation: gql(input),
+        variables: JSON.parse(argument)
+      });
+    };
 
-  operation(input: string, argument: string) {
-    return Config.graphQl;
+    let result = await query();
+    return JSON.stringify(result.data);
   }
-}
+};

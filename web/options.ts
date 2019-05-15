@@ -1,5 +1,5 @@
 import { Mutation } from './mutation';
-import { query } from './query';
+import { Query } from './query';
 
 function exitIfUndefined(value: any, message: string) {
   if (typeof value === 'undefined' || value.trim() === '') {
@@ -8,9 +8,9 @@ function exitIfUndefined(value: any, message: string) {
   }
 }
 
-export const encoders = {
-  ['mutation']: new Mutation(),
-  ['query']: query
+export const gqlOperations = {
+  ['mutation']: Mutation,
+  ['query']: Query
 };
 
 export interface Arguments {
@@ -23,7 +23,7 @@ export class Options implements Arguments {
   readonly arguments: string;
 
   constructor(public readonly input: string, args: Arguments) {
-    exitIfUndefined(input, `Please pass an input string.`);
+    exitIfUndefined(input, 'Please pass an input string.');
 
     this.mutation = args.mutation === undefined ? false : args.mutation;
     this.arguments = args.arguments;
