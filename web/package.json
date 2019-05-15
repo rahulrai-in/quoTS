@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:ts": "tsc",
+    "test": "node spec/index.js",
     "build:watch": "tsc -w",
     "start": "node index.js",
-    "start:debug:brk": "node --nolazy --inspect-brk=9229 index.js mutation QuoteMutation($authorId: Int!, $text: String!, $category: String!) {createQuote(quote: {authorId: $authorId, text: $text, category: $category}) {name quotes {text category}}} -m -a {\"\"\"authorId\"\"\":2,\"\"\"text\"\"\":\"\"\"FamousQuote1\"\"\",\"\"\"category\"\"\":\"\"\"fun\"\"\"}"
+    "run:testMutation": "node --nolazy --inspect-brk=9229 index.js mutation QuoteMutation($authorId: Int!, $text: String!, $category: String!) {createQuote(quote: {authorId: $authorId, text: $text, category: $category}) {name quotes {text category}}} -m -a {\"\"\"authorId\"\"\":2,\"\"\"text\"\"\":\"\"\"FamousQuote1\"\"\",\"\"\"category\"\"\":\"\"\"fun\"\"\"}",
+    "run:testQuery": "node --nolazy --inspect-brk=9229 index.js query AuthorQuery($id:ID) {author(id:$id) {name quotes {text category}}} -a {\"\"\"id\"\"\":1}"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,13 @@
     "cross-fetch": "^3.0.2",
     "graphql": "^14.3.0",
     "graphql-tag": "^2.10.1",
+    "jasmine-console-reporter": "^3.1.0",
     "minimist": "^1.2.0",
+    "source-map-support": "^0.5.12",
     "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.3.12",
+    "jasmine": "^3.4.0"
   }
 }

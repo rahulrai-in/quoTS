@@ -4,7 +4,7 @@ import { Query } from './query';
 function exitIfUndefined(value: any, message: string) {
   if (typeof value === 'undefined' || value.trim() === '') {
     console.error(message);
-    process.exit(1);
+    throw new Error(`${value} is not valid input.`);
   }
 }
 
