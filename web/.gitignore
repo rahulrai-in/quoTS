@@ -50,6 +50,7 @@ typings/
 # Map files
 *compiled.js
 *.js.map
+*.js
 
 # Optional npm cache directory
 .npm
