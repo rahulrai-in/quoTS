@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build api",
+      "command": "dotnet",
+      "group": "build",
+      "type": "process",
+      "args": ["build", "${workspaceFolder}/api/api.csproj"],
+      "problemMatcher": "$tsc"
+    },
+    {
+      "label": "build-watch web",
+      "group": "build",
+      "command": "tsc",
+      "type": "shell",
+      "args": ["-w", "-p", "${workspaceFolder}/web"],
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": "$tsc-watch"
+    }
+  ]
+}
