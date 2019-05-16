@@ -20,5 +20,4 @@ var executeOperation = () => __awaiter(this, void 0, void 0, function* () {
         : yield options_1.gqlOperations['query'].operation(opts.input, opts.arguments);
 });
 executeOperation().then(result => console.log('OUTPUT:', result));
-// "start:debug:brk": "node --nolazy --inspect-brk=9229 index.js query AuthorQuery($id:ID) {author(id:$id) {name quotes {text category}}} -a {\"\"\"id\"\"\":1}"
 //# sourceMappingURL=index.js.map

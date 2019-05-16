@@ -10,5 +10,3 @@ var executeOperation = async () =>
     ? await gqlOperations['mutation'].operation(opts.input, opts.arguments)
     : await gqlOperations['query'].operation(opts.input, opts.arguments);
 executeOperation().then(result => console.log('OUTPUT:', result));
-
-// "start:debug:brk": "node --nolazy --inspect-brk=9229 index.js query AuthorQuery($id:ID) {author(id:$id) {name quotes {text category}}} -a {\"\"\"id\"\"\":1}"
