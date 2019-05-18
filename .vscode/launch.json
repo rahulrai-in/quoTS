@@ -12,7 +12,6 @@
       "cwd": "${workspaceFolder}\\web",
       "sourceMaps": true
     },
-
     {
       "name": "Launch Web",
       "type": "node",

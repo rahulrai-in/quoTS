@@ -7,8 +7,9 @@
     "test": "node spec/index.js",
     "build:watch": "tsc -w",
     "start": "node index.js",
-    "run:testMutation": "node --nolazy --inspect-brk=9229 index.js mutation QuoteMutation($authorId: Int!, $text: String!, $category: String!) {createQuote(quote: {authorId: $authorId, text: $text, category: $category}) {name quotes {text category}}} -m -a {\"\"\"authorId\"\"\":2,\"\"\"text\"\"\":\"\"\"FamousQuote1\"\"\",\"\"\"category\"\"\":\"\"\"fun\"\"\"}",
-    "run:testQuery": "node --nolazy --inspect-brk=9229 index.js query AuthorQuery($id:ID) {author(id:$id) {name quotes {text category}}} -a {\"\"\"id\"\"\":1}"
+    "start:debug:brk": "node --nolazy --inspect-brk=9229 index.js TestString",
+    "run:testMutation": "node index.js mutation QuoteMutation($authorId: Int!, $text: String!, $category: String!) {createQuote(quote: {authorId: $authorId, text: $text, category: $category}) {name quotes {text category}}} -m -a {\"\"\"authorId\"\"\":2,\"\"\"text\"\"\":\"\"\"FamousQuote1\"\"\",\"\"\"category\"\"\":\"\"\"fun\"\"\"}",
+    "run:testQuery": "node index.js query AuthorQuery($id:ID) {author(id:$id) {name quotes {text category}}} -a {\"\"\"id\"\"\":1}"
   },
   "repository": {
     "type": "git",
